@@ -72,7 +72,7 @@ for idx in range (1):
     enc_transformer_1 = torch.nn.DataParallel(
         enc_transformer_1, 
         device_ids=list(range(gpu_num))
-    )
+    ).to(device)
     _x = y_train[idx]
     _y= label_train[idx]
 
