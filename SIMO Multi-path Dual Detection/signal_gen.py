@@ -39,7 +39,7 @@ def signal_gen(
             y_n[m, k] = y[m, k] + np.sqrt(P_n) * \
                 (np.random.randn(Nr) + 1j * np.random.randn(Nr))
             
-    print (b)
+    print (f'{b} - 0')
 
     return y_n, data_label
 
