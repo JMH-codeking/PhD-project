@@ -68,5 +68,5 @@ def multi_cell_gen(
     return y_mc, label
 
 
-_y, _label = multi_cell_gen(3)
+# _y, _label = multi_cell_gen(3)
 
