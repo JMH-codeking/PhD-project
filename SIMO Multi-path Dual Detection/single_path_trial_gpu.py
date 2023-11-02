@@ -20,8 +20,8 @@ label = torch.tensor(
     dtype = torch.long
 )
 
-y_train, label_train = y[:, 0:5000].to(device), label[:, 0:5000].to(device)
-y_test, label_test = y[:, 50000:].to(device), label[:, 50000:].to(device)
+y_train, label_train = y[:, 0:50000], label[:, 0:50000]
+y_test, label_test = y[:, 50000:], label[:, 50000:]
 print (f'training data shape: {y_train.shape}')
 print (f'training label shape: {label_train.shape}')
 print (f'testing data shape: {y_test.shape}')
@@ -95,9 +95,9 @@ for idx in range (1):
         print (f'-------- {epoch} --------')
         for cnt in range (0, symbol_num - window_size + window_size, window_size):
             _cnt = cnt + window_size
-            x = _x[cnt: cnt + window_size]
+            x = _x[cnt: cnt + window_size].to(device)
             x = norm(x)
-            y = _y[cnt: cnt + window_size]
+            y = _y[cnt: cnt + window_size].to(device)
 
             # carrier 0
             # if train_transformer_1:
@@ -163,8 +163,8 @@ for idx in range (1):
     for cnt in range (len(y_test) - window_size + 1):
 
         __x = norm(__x)
-        x = __x[cnt: cnt + window_size]
-        y = __y[cnt: cnt + window_size]
+        x = __x[cnt: cnt + window_size].to(device)
+        y = __y[cnt: cnt + window_size].to(device)
 
         # carrier 0
         Y_transformer = enc_transformer_1(x.permute(1, 0, 2))
